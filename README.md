@@ -1,7 +1,12 @@
-# nonautonomous_pp
+# nonautonomous_pp2
 
 Display an orbit of the given nonautonomous ODE. The right hand of the
-ODE is described into the setup file.
+ODE is described into the setup file. Compared with `nonautonomous_pp`, 
+it is not required a function definition file `ppfunc.pp` anymore. 
+So, you do not have to maintain two related files `ppfunc.pp` and
+setupfile in parallel.
+The right hand of the ODE written in the setup file is evaluated by
+`eval()` function. Possibly this `eval()` consume much time in general.
 
 ## Requirements
 * python 3.8 later
