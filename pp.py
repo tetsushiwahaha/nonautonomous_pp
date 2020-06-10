@@ -8,8 +8,7 @@ import pptools
 
 def func(t, x, data):
 	v =  []
-	n = len(data.dict['func'])
-	for i in np.arange(n):
+	for i in np.arange(len(data.dict['func'])):
 		v.append(eval(data.dict['func'][i]))
 	return v
 
