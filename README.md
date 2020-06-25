@@ -1,12 +1,13 @@
 # nonautonomous_pp2
 
 Display an orbit of the given nonautonomous ODE. The right hand of the
-ODE is described into the setup file. Compared with `nonautonomous_pp`, 
+ODE is described in the setup file. Compared with `nonautonomous_pp`, 
 it is not required a function definition file `ppfunc.pp` anymore. 
 So, you do not have to maintain two related files `ppfunc.pp` and
-setupfile in parallel.
-The right hand of the ODE written in the setup file is evaluated by
-`eval()` function. Possibly this `eval()` consume much time in general.
+setupfile in parallel. Focus on setup file only.
+The right hand of the ODE in the setup file is evaluated by
+`eval()` function. Possibly this `eval()` consumes much time in general, but
+the author does not recognize an obvious delay as far as examined.
 
 ## Requirements
 * python 3.8 later
@@ -46,12 +47,12 @@ in the graph.
  
 ### key operation
 
-- s: print the current status
-- f: show/hide trajectory (toggle)
-- w: print the dictionary and dump it to `__ppout__.json`
-- p: change the active parameter (default: 0, toggle)
+- `s`: print the current status
+- `f`: show/hide trajectory (toggle)
+- `w`: print the dictionary and dump it to `__ppout__.json`
+- `p`: change the active parameter (default: 0, toggle)
 - up and down arrows: increase/decrease the active parameter value
-- space: clear transitions
-- q: quit 
+- `space`: clear transitions
+- `q`: quit 
 }
 
