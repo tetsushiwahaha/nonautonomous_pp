@@ -4,7 +4,7 @@ Display an orbit of the given nonautonomous ODE. The right hand of the
 ODE is described in the setup file. Compared with `nonautonomous_pp`, 
 it is not required a function definition file `ppfunc.pp` anymore. 
 So, you do not have to maintain two related files `ppfunc.pp` and
-setupfile in parallel. Focus on setup file only.
+setupfile in parallel. Focus on the setup file only.
 The right hand of the ODE in the setup file is evaluated by
 `eval()` function. Possibly this `eval()` consumes much time in general, but
 the author does not recognize an obvious delay as far as examined.
@@ -26,13 +26,13 @@ the author does not recognize an obvious delay as far as examined.
 
 ## Setup file configuration
 
-* func: a list of the right hand of the ODE.
-* xrange, yrange: x-y range of the graph
-* alpha:  transparency value, zero to one.
-* params:	a list of parameter values
-* x0:	a list of initial values
-* dparams: a list of incremental values corresponding to the parameters
-* tick: a time step for drawing a curve
+* `func`: a list of the right hand of the ODE.
+* `xrange`, yrange: x-y range of the graph
+* `alpha`:  transparency value, zero to one.
+* `params`:	a list of parameter values
+* `x0`:	a list of initial values
+* `dparams`: a list of incremental values corresponding to the parameters
+* `tick`: a time step for drawing a curve
 
 ### variables and parameters
 
