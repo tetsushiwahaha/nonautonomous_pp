@@ -1,10 +1,9 @@
 # nonautonomous_pp2
 
 Display an orbit of the given nonautonomous ODE. The right hand of the
-ODE is described in a setup file. Compared with `nonautonomous_pp`, 
-`ppfunc.pp` is not required.
-The right hand of the ODE is evaluated by
-`eval()` function, so this utility is slower than `nonautonomous_pp`.
+ODE is described in a setup file. 
+Probably this ruins a certain speed of the simulator, but it is 
+convenient for a practical use.
 
 ## Requirements
 * python 3.8 later
