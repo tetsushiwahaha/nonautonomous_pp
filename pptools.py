@@ -120,14 +120,19 @@ def show_param(data):
 	plt.title(s, color='b')
 
 def on_click(event, data):
-	s0 = data.dict['x0']
-	s0[0] = event.xdata
-	s0[1] = event.ydata
+	s0 = data.dict['x0'] 
+	if event.xdata == None and event.ydata == None:
+		return
+	sx = event.xdata
+	sy = event.ydata
+	s0[0] = sx
+	s0[1] = sy
 	plt.plot(s0[0], s0[1], 'o', markersize = 2, color="blue")
 	data.dict['x0'] = s0
 	print(data.dict['x0'])
 	redraw_frame(data)
 	show_param(data)
+	return
 
 def on_close():
 	running = False

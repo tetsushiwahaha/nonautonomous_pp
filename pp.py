@@ -32,7 +32,7 @@ def main():
 			#method = 'DOP853', 
 			method = 'RK45', args=(data, ))
 		if data.visual_orbit == 1:
-			lines, = plt.plot(state.y[0, :], state.y[1, :], 
+			plt.plot(state.y[0, :], state.y[1, :], 
 				linewidth = 1, color = (0, 0, 0), 
 				ls = "-", alpha = data.dict['alpha'])
 		plt.plot(state.y[0, -1], state.y[1, -1], 'o', 
