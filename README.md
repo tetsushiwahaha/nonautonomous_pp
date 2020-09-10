@@ -1,7 +1,10 @@
-# nonautonomous_pp2
+# nonautonomous_pp
 
-Display an orbit of the given nonautonomous ODE. The right hand of the
-ODE is described in a setup file. 
+<img align="center" src="https://user-images.githubusercontent.com/52724526/81895796-11b43800-95ee-11ea-90df-2ef3d052b454.png" width = "300px" >
+
+
+Display a phase portrait of the given nonautonomous ODE. 
+The right hand of the ODE is described in a setup file. 
 Probably this ruins a certain speed of the simulator, but it is 
 convenient for a practical use.
 
