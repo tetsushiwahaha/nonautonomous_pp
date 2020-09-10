@@ -121,12 +121,10 @@ def show_param(data):
 
 def on_click(event, data):
 	s0 = data.dict['x0'] 
-	if event.xdata == None and event.ydata == None:
+	if event.xdata == None or event.ydata == None:
 		return
-	sx = event.xdata
-	sy = event.ydata
-	s0[0] = sx
-	s0[1] = sy
+	s0[0] = event.xdata
+	s0[1] = event.ydata
 	plt.plot(s0[0], s0[1], 'o', markersize = 2, color="blue")
 	data.dict['x0'] = s0
 	print(data.dict['x0'])

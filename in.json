@@ -5,14 +5,14 @@
 		"-data.dict['params'][0] * x[1] - x[0]**3 + data.dict['params'][1] + data.dict['params'][2] * cos(t)"
 	],
 
-"xrange": [ -2.0, 2.0],
-"yrange": [ -2.0, 2.0],
-"alpha": 0.2,
+"xrange": [ -8.0, 8.0],
+"yrange": [ -8.0, 8.0],
+"alpha": 0.4,
 
-"params":	[0.2, 0.03, 0.14],
+"params":	[0.2, 4, 5.0],
 "x0":	[ 0.5, 0.3 ],
 
-"dparams":	[0.01, 0.001, 0.001],
+"dparams":	[0.01, 0.01, 0.01],
 
 "eps":	0.00001,
 "errors": 0.0000001,

@@ -1,3 +1,8 @@
+#!/usr/bin/env python
+'''
+	Solve a nonautonomous ODE and display its phase portrait.
+'''
+
 import sys, json
 import numpy as np
 from numpy import cos
