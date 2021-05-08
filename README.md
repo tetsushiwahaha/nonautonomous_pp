@@ -35,7 +35,7 @@ convenient for a practical use.
 ### variables and parameters
 
 * `x[0]`, `x[1]`, ...: state variables
-* `data.dict['params'][0]`, `data.dict['params'][1]`, ...: parameters 
+* `data.dic['params'][0]`, `data.dic['params'][1]`, ...: parameters 
 
 ## How to use
 ### mouse operation 

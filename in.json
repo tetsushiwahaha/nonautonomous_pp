@@ -2,7 +2,7 @@
 "_comment": "This is a samle setting file",
 
 "func": [ "x[1]", 
-		"-data.dict['params'][0] * x[1] - x[0]**3 + data.dict['params'][1] + data.dict['params'][2] * cos(t)"
+		"-data.dic['params'][0] * x[1] - x[0]**3 + data.dic['params'][1] + data.dic['params'][2] * cos(t)"
 	],
 
 "xrange": [ -8.0, 8.0],

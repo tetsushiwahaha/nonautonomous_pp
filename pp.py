@@ -13,18 +13,18 @@ import pptools
 
 def func(t, x, data):
 	v =  []
-	for i in np.arange(len(data.dict['func'])):
-		v.append(eval(data.dict['func'][i]))
+	for i in np.arange(len(data.dic['func'])):
+		v.append(eval(data.dic['func'][i]))
 	return v
 
 def main():
 	data = pptools.init()
 
-	state0 = data.dict['x0']
-	tick = data.dict['tick']
+	state0 = data.dic['x0']
+	tick = data.dic['tick']
 
 	fperiod = 2.0 * np.pi
-	duration = fperiod * data.dict['period']
+	duration = fperiod * data.dic['period']
 	tspan = np.arange(0, duration, tick)
 	running = True
 	
@@ -39,10 +39,10 @@ def main():
 		if data.visual_orbit == 1:
 			plt.plot(state.y[0, :], state.y[1, :], 
 				linewidth = 1, color = (0, 0, 0), 
-				ls = "-", alpha = data.dict['alpha'])
+				ls = "-", alpha = data.dic['alpha'])
 		plt.plot(state.y[0, -1], state.y[1, -1], 'o', 
-			markersize = 2, color="red", alpha = data.dict['alpha'])
-		state0 = data.dict['x0'] = state.y[:, -1] 
+			markersize = 2, color="red", alpha = data.dic['alpha'])
+		state0 = data.dic['x0'] = state.y[:, -1] 
 		plt.pause(0.001) #REQIRED
 
 if __name__ == '__main__':
