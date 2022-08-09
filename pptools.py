@@ -1,6 +1,7 @@
 import sys, json
 import matplotlib.pyplot as plt
 import numpy as np
+from numpy import cos
 from matplotlib import rc
 from matplotlib.backends.backend_pdf import PdfPages
 
@@ -18,17 +19,36 @@ class DataStruct():
 		self.fig =None
 		if self.dic.get('alpha', None) == None:
 			self.dic['alpha'] = 1.0
+		if self.dic.get('write', None) == None:
+			self.dic['write'] = False
+			np.set_printoptions(threshold=np.inf)
 
 def init():
+	params = {'text.usetex': True,
+		'text.latex.preamble': r'\usepackage{newtxtext,newtxmath}',
+		'legend.fontsize': 24, 'axes.labelsize': 24,
+		'axes.titlesize': 24, 'xtick.labelsize' :24,
+		'ytick.labelsize': 24, 'font.family': 'serif',
+		'grid.color': 'k', 'grid.linestyle': ':',
+		'grid.linewidth': 0.5,
+	}
+	#plt.rcParams.update(params)
 	plt.rcParams['keymap.save'].remove('s')
 	plt.rcParams['keymap.quit'].remove('q')
+	plt.rcParams['font.size'] = 24
+
 	data = DataStruct()
 
-	data.fig = plt.figure(figsize=(10, 10))
+	data.fig = plt.figure(figsize=(12, 12))
 	data.ax = data.fig.add_subplot(111)
 
 	redraw_frame(data)
 	data.visual_orbit = 1
+
+
+	if data.dic['write'] == "True":
+		data.dumpfd = open("__dump__", 'w')
+
 
 	plt.connect('button_press_event', 
 		lambda event: on_click(event, data))
@@ -50,8 +70,8 @@ def redraw_frame(data):
 	data.ax.set_ylim(yr)
 	#data.ax.set_xlabel(r'$\sin x$')
 	#data.ax.set_ylabel(r'$y$')
-	data.ax.set_xlabel("x")
-	data.ax.set_ylabel("y")
+	data.ax.set_xlabel("$x$")
+	data.ax.set_ylabel("$y$")
 	data.ax.grid(c = 'gainsboro', zorder = 9)
 
 class jsonconvert(json.JSONEncoder):
@@ -90,7 +110,7 @@ def keyin(event, data):
 		plt.cla()
 		redraw_frame(data)
 	elif event.key == 'f':
-		plt.cla()
+		#plt.cla()
 		redraw_frame(data)
 		data.visual_orbit = 1 - data.visual_orbit
 	elif event.key == 's':
@@ -115,9 +135,11 @@ def show_param(data):
 	s = ""
 	cnt = 0
 	for key in data.dic['params']:
-		s += " param{:d}: {:.5f}  ".format(cnt, key) 
+		s += "p${:d}$: ${:.5g}$".format(cnt, key) 
+		if cnt < len(data.dic['params']) - 1:
+			s += ", "
 		cnt += 1
-	plt.title(s, color='b')
+	plt.title(s, color='b', size=12)
 
 def on_click(event, data):
 	s0 = data.dic['x0'] 
@@ -125,7 +147,8 @@ def on_click(event, data):
 		return
 	s0[0] = event.xdata
 	s0[1] = event.ydata
-	plt.plot(s0[0], s0[1], 'o', markersize = 2, color="blue")
+	plt.plot(s0[0], s0[1], 'o', markersize = 3, color="blue",
+		alpha = data.dic['alpha'])
 	data.dic['x0'] = s0
 	print(data.dic['x0'])
 	redraw_frame(data)
@@ -135,3 +158,9 @@ def on_click(event, data):
 def on_close():
 	running = False
 
+
+def func(t, x, data):
+	v =  []
+	for i in np.arange(len(data.dic['func'])):
+		v.append(eval(data.dic['func'][i]))
+	return v

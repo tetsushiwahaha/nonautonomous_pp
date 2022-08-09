@@ -11,15 +11,8 @@ import matplotlib.pyplot as plt
 
 import pptools
 
-def func(t, x, data):
-	v =  []
-	for i in np.arange(len(data.dic['func'])):
-		v.append(eval(data.dic['func'][i]))
-	return v
-
 def main():
 	data = pptools.init()
-
 	state0 = data.dic['x0']
 	tick = data.dic['tick']
 
@@ -31,17 +24,17 @@ def main():
 	while running:
 		if pptools.window_closed(data.ax) == True:
 			sys.exit()
-		state = solve_ivp(func, (0, duration), state0, 
-			t_eval=tspan, 
-			rtol = 1e-6,
-			#method = 'DOP853', 
+		state = solve_ivp(pptools.func, (0, duration), state0, 
+			t_eval=tspan, rtol = 1e-10, atol = 1e-10, #method = 'DOP853', 
 			method = 'RK45', args=(data, ))
 		if data.visual_orbit == 1:
 			plt.plot(state.y[0, :], state.y[1, :], 
-				linewidth = 1, color = (0, 0, 0), 
+				linewidth = 3, color = (0, 0, 0), 
 				ls = "-", alpha = data.dic['alpha'])
 		plt.plot(state.y[0, -1], state.y[1, -1], 'o', 
-			markersize = 2, color="red", alpha = data.dic['alpha'])
+			markersize = 3, color="red", alpha = data.dic['alpha']*5.0)
+		if data.dic['write'] == "True":
+			data.dumpfd.writelines(str(state.y))
 		state0 = data.dic['x0'] = state.y[:, -1] 
 		plt.pause(0.001) #REQIRED
 
