@@ -32,7 +32,7 @@ def main():
 				linewidth = 3, color = (0, 0, 0), 
 				ls = "-", alpha = data.dic['alpha'])
 		plt.plot(state.y[0, -1], state.y[1, -1], 'o', 
-			markersize = 3, color="red", alpha = data.dic['alpha']*5.0)
+			markersize = 3, color="red", alpha = data.dic['alpha'])
 		if data.dic['write'] == "True":
 			data.dumpfd.writelines(str(state.y))
 		state0 = data.dic['x0'] = state.y[:, -1] 
