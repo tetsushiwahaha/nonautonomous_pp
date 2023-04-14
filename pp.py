@@ -25,10 +25,10 @@ def main():
 		if pptools.window_closed(data.ax) == True:
 			sys.exit()
 		state = solve_ivp(pptools.func, (0, duration), state0, 
-			t_eval=tspan, rtol = 1e-10, atol = 1e-10, #method = 'DOP853', 
+			t_eval=tspan, rtol = 1e-12, atol = 1e-12, #method = 'DOP853', 
 			method = 'RK45', args=(data, ))
 		if data.visual_orbit == 1:
-			plt.plot(state.y[0, :], state.y[1, :], 
+			plt.plot(state.y[0, :], state.y[1, :],
 				linewidth = 3, color = (0, 0, 0), 
 				ls = "-", alpha = data.dic['alpha'])
 		plt.plot(state.y[0, -1], state.y[1, -1], 'o', 

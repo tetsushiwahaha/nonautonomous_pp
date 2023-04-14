@@ -14,6 +14,7 @@ class DataStruct():
 		fd = open(sys.argv[1], 'r')
 		self.dic = json.load(fd)
 		fd.close()
+		print("hogehoge")
 		self.param_ptr = 0
 		self.ax =None
 		self.fig =None
@@ -25,17 +26,19 @@ class DataStruct():
 
 def init():
 	params = {'text.usetex': True,
-		'text.latex.preamble': r'\usepackage{newtxtext,newtxmath}',
-		'legend.fontsize': 24, 'axes.labelsize': 24,
-		'axes.titlesize': 24, 'xtick.labelsize' :24,
-		'ytick.labelsize': 24, 'font.family': 'serif',
+		#'text.latex.preamble': r'\usepackage{newtxtext,newtxmath}',
+		'legend.fontsize': 20, 'axes.labelsize': 20,
+		'axes.titlesize': 20, 'xtick.labelsize' :20,
+		'ytick.labelsize': 20, 'font.family': 'serif',
 		'grid.color': 'k', 'grid.linestyle': ':',
-		'grid.linewidth': 0.5,
+		'grid.linewidth': 2.0,
 	}
 	#plt.rcParams.update(params)
 	plt.rcParams['keymap.save'].remove('s')
+	plt.rcParams['keymap.fullscreen'].remove('f')
 	plt.rcParams['keymap.quit'].remove('q')
 	plt.rcParams['font.size'] = 24
+
 
 	data = DataStruct()
 
@@ -70,8 +73,10 @@ def redraw_frame(data):
 	data.ax.set_ylim(yr)
 	#data.ax.set_xlabel(r'$\sin x$')
 	#data.ax.set_ylabel(r'$y$')
-	data.ax.set_xlabel("$x$")
-	data.ax.set_ylabel("$y$")
+	#data.ax.set_xlabel("$x$")
+	#data.ax.set_ylabel("$y$")
+	data.ax.set_xlabel(r'$x\longrightarrow$')
+	data.ax.set_ylabel(r'$y\longrightarrow$')
 	data.ax.grid(c = 'gainsboro', zorder = 9)
 
 class jsonconvert(json.JSONEncoder):
@@ -139,7 +144,7 @@ def show_param(data):
 		if cnt < len(data.dic['params']) - 1:
 			s += ", "
 		cnt += 1
-	plt.title(s, color='b', size=12)
+	plt.title(s, color='b', size=20)
 
 def on_click(event, data):
 	s0 = data.dic['x0'] 
